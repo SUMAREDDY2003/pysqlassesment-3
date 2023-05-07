@@ -1,0 +1,38 @@
+-----------------------------------EXERECISE 1-----------------------------------------------
+
+create database OnlineConsultaion;
+create table doctor(
+doc_id int primary key not null,
+doc_name varchar(30),
+doc_specification  varchar(30)
+);
+create table patient(
+pat_id int primary key not null,
+pat_name varchar(30),
+pat_disease varchar(30)
+);
+create table appointment(
+appo_id  int primary key not null,
+doc_id int  REFERENCES doctor(doc_id),
+pat_id int  REFERENCES patient(pat_id)
+);
+create table review(
+pat_id int REFERENCES patient(pat_id),
+doc_id int REFERENCES doctor(doc_id),
+review varchar(30)
+);
+SELECT * FROM appointment;
+SELECT * FROM DOCTOR;
+SELECT * FROM PATIENT;
+select* FROM REVIEW;
+                     ---------------------------Exercise 2-------------------------------
+
+SELECT * FROM ContactTable where Active_flag=1;
+DELETE FROM ContactTable where opt_out=1;
+DELETE FROM ContactTable where company="ABC";
+INSERT INTO ContactTable(id,name,email,company,active_flag,opt_out) VALUES(658,"mili","mili@gmail.com","DGH",1,1);
+SELECT DISTINCT company from ContactTable;
+update ContactTable set name="niti" where name="mili";
+
+---------------------------------EXERCISE 3----------------------------------------
+select c.customer_id,cust_name,customer_city,grade,salesman_name,salesman_city from customer as c,salesman as s where c.grade<100 order by c.customer_id ASC;
